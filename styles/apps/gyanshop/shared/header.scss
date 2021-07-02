@@ -1,0 +1,19 @@
+header {
+
+    .header-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        img {
+            width: 100px;
+        }
+    }
+
+   .tools {
+       .pi{
+           margin-right: 10px;
+       }
+   }
+}

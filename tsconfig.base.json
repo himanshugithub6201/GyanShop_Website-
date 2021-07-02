@@ -15,11 +15,11 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@env/*": ["environments/*"],
             "@gyanshop/orders": ["libs/orders/src/index.ts"],
             "@gyanshop/products": ["libs/products/src/index.ts"],
             "@gyanshop/ui": ["libs/ui/src/index.ts"],
-            "@gyanshop/users": ["libs/users/src/index.ts"],
-            "@env/*":["environments/*"]
+            "@gyanshop/users": ["libs/users/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]

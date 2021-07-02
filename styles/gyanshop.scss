@@ -1,3 +1,6 @@
+@import '~normalize.css/normalize.css';
+
+
 @import './base/colors.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
@@ -7,6 +10,7 @@
 @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeflex/primeflex.css';
+@import '~animate.css/animate.css';
 
 
 @import './base/configuration.scss';
@@ -19,7 +23,24 @@
 //Shared
 @import './apps/gyanshop/shared/header.scss';
 @import './apps/gyanshop/shared/footer.scss';
+@import './apps/gyanshop/shared/nav.scss';
 
 //libs
 @import './libs/ui/ui.scss';
+@import './libs/products/products.scss';
+
+.container {
+    width: 1250px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: var(--surface-100);
+    // background-image: url("./../../gyanshop/apps/gyanshop/src/assets/images/1567666.png");
+     background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+}
+
+body {
+    background-color: #85FFBD;
+    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+}
 

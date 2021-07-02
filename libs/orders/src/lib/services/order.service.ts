@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Order } from '../models/order';
 import { Observable } from 'rxjs';
 import { environment }  from '@env/environment';
-
+import { map } from 'rxjs/operators'; 
 @Injectable({
   providedIn: 'root'
 })
@@ -26,8 +26,23 @@ export class OrdersService {
     return this.http.delete<any>(`${this.apiUrlOrders}/${orderId}`);
   }
 
-  updateOrder(orderStaus: { status: string }, orderId?: string): Observable<Order> {
+  updateOrder(orderStaus: { status: string }, orderId?
+    : string): Observable<Order> {
     return this.http.put<Order>(`${this.apiUrlOrders}/${orderId}`, orderStaus);
   }
+
+
+  
+getOrdersCount(): Observable<number> {
+  return this.http
+    .get<number>(`${this.apiUrlOrders}/get/count`)
+    .pipe(map((objectValue: any) => objectValue.orderCount));
+}
+
+getTotalSales(): Observable<number> {
+  return this.http
+    .get<number>(`${this.apiUrlOrders}/get/totalsales`)
+    .pipe(map((objectValue: any) => objectValue.totalsales));
+}
 
 }

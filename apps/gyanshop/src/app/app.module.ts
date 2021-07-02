@@ -9,18 +9,25 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@gyanshop/ui';
+import { ProductsModule } from '@gyanshop/products';
 import { AccordionModule } from 'primeng/accordion';
+import { NavComponent } from './shared/nav/nav.component';
+import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [{
-  path: '',
-  component:HomePageComponent
-},{
-  path:'products',component:ProductListComponent
-}]
+const routes: Routes = [
+    {
+        path: '',
+        component: HomePageComponent
+    },
+    {
+        path: 'products',
+        component: ProductListComponent
+    }
+];
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent],
-  imports: [BrowserModule,BrowserAnimationsModule, AccordionModule,RouterModule.forRoot(routes), UiModule],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, HomePageComponent, ProductListComponent, HeaderComponent, FooterComponent, NavComponent],
+    imports: [BrowserModule, BrowserAnimationsModule, AccordionModule, RouterModule.forRoot(routes), UiModule,ProductsModule,HttpClientModule],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

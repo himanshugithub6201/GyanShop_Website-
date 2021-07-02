@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem, CartService } from '@gyanshop/orders';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Product } from '../../models/product.model';
@@ -14,8 +15,8 @@ import { ProductsService } from '../../services/products.service';
 export class ProductPageComponent implements OnInit,OnDestroy {
   product! : Product
   endSubs$:Subject<any>=new Subject();
-  quantity!:number;
-  constructor(private producService:ProductsService,private route:ActivatedRoute) { }
+  quantity=1;
+  constructor(private cartService:CartService,private producService:ProductsService,private route:ActivatedRoute) { }
   ngOnDestroy(): void {
     this.endSubs$.next();
     this.endSubs$.subscribe();
@@ -35,7 +36,11 @@ export class ProductPageComponent implements OnInit,OnDestroy {
   }
 
   addProductCart(){
-    
+    const cartItem:CartItem= {
+      productId:this.product.id,
+      quantity:this.quantity
+    }
+    this.cartService.setCartItem(cartItem);
   }
 
 }

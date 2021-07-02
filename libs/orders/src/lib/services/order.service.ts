@@ -1,48 +1,46 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Order } from '../models/order';
 import { Observable } from 'rxjs';
-import { environment }  from '@env/environment';
-import { map } from 'rxjs/operators'; 
+import { environment } from '@env/environment';
+import { map } from 'rxjs/operators';
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class OrdersService {
-  apiUrlOrders = environment.apiURL + 'orders/';
-  constructor(private http: HttpClient) { }
+    apiUrlOrders = environment.apiURL + 'orders/';
+    apiUrlProducts = environment.apiURL + 'products/';
 
-  getOrders():Observable<Order[]>{
-    return this.http.get<Order[]>(this.apiUrlOrders)
-  }
-  getOrder(orderId:string):Observable<Order>{
-    return this.http.get<Order>(`${this.apiUrlOrders}/${orderId}`);
-  }
+    constructor(private http: HttpClient) {}
 
-  createOrder(order : Order):Observable<Order>{
-    return this.http.post<Order>(this.apiUrlOrders,order);
-  }
+    getOrders(): Observable<Order[]> {
+        return this.http.get<Order[]>(this.apiUrlOrders);
+    }
+    getOrder(orderId: string): Observable<Order> {
+        return this.http.get<Order>(`${this.apiUrlOrders}/${orderId}`);
+    }
 
-  deleteOrder(orderId:string):Observable<any>{
-    return this.http.delete<any>(`${this.apiUrlOrders}/${orderId}`);
-  }
+    createOrder(order: Order): Observable<Order> {
+        return this.http.post<Order>(this.apiUrlOrders, order);
+    }
 
-  updateOrder(orderStaus: { status: string }, orderId?
-    : string): Observable<Order> {
-    return this.http.put<Order>(`${this.apiUrlOrders}/${orderId}`, orderStaus);
-  }
+    deleteOrder(orderId: string): Observable<any> {
+        return this.http.delete<any>(`${this.apiUrlOrders}/${orderId}`);
+    }
 
+    updateOrder(orderStaus: { status: string }, orderId?: string): Observable<Order> {
+        return this.http.put<Order>(`${this.apiUrlOrders}/${orderId}`, orderStaus);
+    }
 
-  
-getOrdersCount(): Observable<number> {
-  return this.http
-    .get<number>(`${this.apiUrlOrders}/get/count`)
-    .pipe(map((objectValue: any) => objectValue.orderCount));
-}
+    getOrdersCount(): Observable<number> {
+        return this.http.get<number>(`${this.apiUrlOrders}/get/count`).pipe(map((objectValue: any) => objectValue.orderCount));
+    }
 
-getTotalSales(): Observable<number> {
-  return this.http
-    .get<number>(`${this.apiUrlOrders}/get/totalsales`)
-    .pipe(map((objectValue: any) => objectValue.totalsales));
-}
+    getTotalSales(): Observable<number> {
+        return this.http.get<number>(`${this.apiUrlOrders}/get/totalsales`).pipe(map((objectValue: any) => objectValue.totalsales));
+    }
 
+    getProduct(productId: any): Observable<any> {
+        return this.http.get<any>(`${this.apiUrlProducts}/${productId}`);
+    }
 }

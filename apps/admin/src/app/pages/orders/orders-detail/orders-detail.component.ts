@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Order, OrdersService } from '@gyanshop/orders';
+import { OrdersService,ORDER_STATUS } from '@gyanshop/orders';
 import { MessageService } from 'primeng/api';
 
-import { ORDER_STATUS } from '../order.constants';
 @Component({
   selector: 'admin-orders-detail',
   templateUrl: './orders-detail.component.html',
